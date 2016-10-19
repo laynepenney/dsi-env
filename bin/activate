@@ -1,0 +1,19 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$DIR/_env"
+
+if [[ "$CONDA_EXEC" == "$(which conda)" ]]
+then
+	cd "$DSI_PATH"
+	env_config="./environment.yml"
+
+	if [ -e $env_config ]
+	then
+		ignore="$(conda env update -n $CONDA_ENV_NAME -f environment.yml --prune --quiet)"
+	fi
+
+	source activate $CONDA_ENV_NAME
+	pip install -e "$DSI_LIB_PATH" -q
+fi

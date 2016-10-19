@@ -1,0 +1,47 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export DSI_BIN_PATH="$DIR"
+export DSI_PATH="$DIR/.."
+export DSI_DATA_PATH="$DSI_PATH/data"
+export DSI_LIB_PATH="$DSI_PATH/lib"
+
+function local_property {
+	python "$DIR/_properties.py" "$1"
+}
+
+if [[ -z "$CONDA_HOME" ]]
+then
+	conda_home="$( which conda )"
+
+	if [[ -z "$conda_home" ]]
+	then
+		conda_home="$(local_property 'CONDA_HOME')"
+	fi
+
+	export CONDA_HOME="$conda_home"
+	export CONDA_EXEC="$conda_home/conda"
+fi
+
+if [[ -z "$CONDA_ENV_NAME" ]]
+then
+	conda_env_name="$(local_property 'CONDA_ENV_NAME')"
+
+	if [[ -z "$conda_env_name" ]]
+	then
+		conda_env_name="dsienv"
+	fi
+
+	export CONDA_ENV_NAME="$conda_env_name"
+fi
+
+echo "CONDA_HOME=$CONDA_HOME"
+echo "CONDA_ENV_NAME=$CONDA_ENV_NAME"
+
+if [[ "$PATH" != *"$CONDA_HOME"* ]]
+then
+	export PATH="$CONDA_HOME:$PATH"
+fi
+
+python --version
+echo "python_home=$(which python)"

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/activate"
+
+path="."
+if [[ !  -z  "$1"  ]]
+then
+	path="$1"
+fi
+
+jupyter notebook "$path"
+source "$DIR/deactivate"

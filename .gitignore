@@ -1,0 +1,6 @@
+/**/.ipynb_checkpoints/*
+/**/.idea/*
+/**/*.egg-info/**
+.DS_Store
+*.pyc
+local.properties
