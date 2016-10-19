@@ -12,6 +12,7 @@ then
     source deactivate $CONDA_ENV_NAME
 
     # remove user-specific env output
+    grep -v "name:" $env_file > $temp_file && mv $temp_file $env_file
     grep -v "prefix:" $env_file > $temp_file && mv $temp_file $env_file
   fi
 fi

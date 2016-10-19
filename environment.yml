@@ -1,4 +1,3 @@
-name: dsienv
 channels: !!python/tuple
 - !!python/unicode 'defaults'
 dependencies:
