@@ -6,3 +6,8 @@ LIB_PATH = env.var('DSI_LIB_PATH')
 
 from . import data
 from . import util
+
+
+def main():
+    """Entry point for the application script"""
+    print("Call your main application code here")
