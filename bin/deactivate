@@ -7,12 +7,12 @@ then
     env_file="$DSI_PATH/environment.yml"
     temp_file="$DSI_PATH/.temp"
 
-    pip uninstall dsci -y
     conda env export -f $env_file
     source deactivate $CONDA_ENV_NAME
 
     # remove user-specific env output
     grep -v "name:" $env_file > $temp_file && mv $temp_file $env_file
     grep -v "prefix:" $env_file > $temp_file && mv $temp_file $env_file
+    grep -v "dsci" $env_file > $temp_file && mv $temp_file $env_file
   fi
 fi

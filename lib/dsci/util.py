@@ -2,6 +2,7 @@ import inflection
 
 
 def clean_column(col):
+    col = col.strip().replace(': ', '_')
     col = col.replace(' ', '_')
     return inflection.underscore(col)
 
