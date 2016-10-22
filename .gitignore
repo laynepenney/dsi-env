@@ -4,3 +4,9 @@
 .DS_Store
 *.pyc
 local.properties
+dist/
+build/
+/**/.tox/
+/**/.coverage
+/**/.cache
+/**/venv/*

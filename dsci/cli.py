@@ -30,7 +30,7 @@ def activate(home, env):
 
 
 @main.command()
-@click.argument('--env', '-e', default='dsienv', required=False)
+@click.option('--env', '-e', default='dsienv', required=False)
 @click.pass_obj
 def deactivate(home, env):
     """deactivate dsci env"""
